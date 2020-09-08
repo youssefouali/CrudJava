@@ -26,13 +26,29 @@ public class Employee {
     @Column(name= "email")
     private String email;
 
+    @ManyToOne
+    private Departement departement;
+
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String email) {
+    public Employee(Departement departement) {
+        this.departement = departement;
+    }
+
+    public Departement getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(Departement departement) {
+        this.departement = departement;
+    }
+
+    public Employee(String firstName, String lastName, String email, Departement departement) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.departement= new Departement();
     }
 
     public long getId() {
